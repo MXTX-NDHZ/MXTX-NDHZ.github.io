@@ -6,7 +6,7 @@ layout: null
 
 /* --- Zine gallery --*/
 .row > .column {
-  padding: 0 8px;
+  padding: 2px 8px;
 }
 
 .row:after {

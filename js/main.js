@@ -9,6 +9,12 @@ function closeModal() {
   document.getElementById("myModal").style.display = "none";
 }
 
+$(document).keyup(function(e) {
+     if (e.key === "Escape") { // escape key maps to keycode `27`
+        closeModal()
+    }
+});
+
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -37,9 +43,9 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
-  let title = dots[slideIndex-1].title
-  let artist_link = dots[slideIndex-1].data-artist-link
-  let artist = dots[slideIndex-1].data-artist 
+  var title = dots[slideIndex-1].title
+  var artist_link = dots[slideIndex-1].dataset.artistlink
+  var artist = dots[slideIndex-1].dataset.artist
 
   captionText.innerHTML = `${title} by <a href="${artist_link}">${artist}</a>`
 

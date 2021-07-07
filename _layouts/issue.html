@@ -1,0 +1,45 @@
+---
+layout: page
+---
+
+<div class="row">
+{% for art in site.data[{{page.data_name}}] %}
+<div class="column">
+  <img src="{{page.art-location}}/{{art.image}}" onclick="openModal();currentSlide({{forloop.index}})" class="hover-shadow" title="{{art["title"]}}" data-artist="{{art["artist name"]}}" data-artistlink="{{art["social media link"]}}">
+</div>
+{% endfor %}
+</div>
+
+
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+  {% for art in site.data[{{page.data_name}}] %}
+  <div class="mySlides">
+    <div class="numbertext">{{forloop.index}} / {{site.data.issue02.size}}</div>
+    <img src="{{page.art-location}}/{{art.image}}" style="width:100%" alt="{{art["alt text"]}}">
+  </div>
+
+  {% endfor %}
+
+    <!-- Next/previous controls -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <!-- Caption text -->
+    <div class="caption-container">
+      <p id="caption">caption text</p>
+    </div>
+
+  <!-- Thumbnail image controls -->
+  {% for art in site.data[{{page.data_name}}] %}
+
+  <div class="preview-column">
+    <img class="demo" src="{{page.art-location}}/{{art.image}}" onclick="currentSlide({{forloop.index}})" title="{{art["title"]}}" data-artist="{{art["artist name"]}}" data-artistlink="{{art["social media link"]}}">
+  </div>
+
+  {% endfor %}
+
+  </div>
+</div>
